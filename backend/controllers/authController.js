@@ -1,10 +1,9 @@
 const User = require('../models/User');
-const bcrypt = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
-exports.createUser = async (req, res) => {
-
+exports.authUser = async (req, res) => {
     // check for errors
     const errors = validationResult(req);
     if( !errors.isEmpty() ) {
@@ -12,21 +11,22 @@ exports.createUser = async (req, res) => {
     }
 
     // extract email and password
-    const { name, email, password } = req.body;
-
+    const { email, password } = req.body;
 
     try {
         // Check that registered user is unique
         let user = await User.findOne({ email });
-
-        if(user) {
-            return res.status(400).json({ msg: 'El usuario ya existe' });
+        if(!user) {
+            return res.status(400).json({msg: 'El usuario no existe'});
         }
 
-        //Create User
-        user = new User(req.body);
-        await user.save()
+        // Check password
+        const correctPassword = await bcryptjs.compare(password, user.password);
+        if(!correctPassword) {
+            return res.status(400).json({msg: 'Contraseña Incorrecta' });
+        }
 
+        //ok
         // Create and sign JWT
         const payload = {
             user: {
@@ -44,9 +44,19 @@ exports.createUser = async (req, res) => {
             res.json({ token  });
         });
 
-
     } catch (error) {
         console.log(error);
-        res.status(400).send('Hubo un error');
+    }
+}
+
+
+// Get which user is authenticated
+exports.userAuth = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json({user});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({msg: 'Hubo un error'});
     }
 }
