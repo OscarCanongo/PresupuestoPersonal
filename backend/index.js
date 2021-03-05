@@ -1,12 +1,15 @@
 const express = require('express');
-const connectDB = require('./config/db');
+const db = require('./config/db');
 const cors = require('cors');
 
 // create server
 const app = express();
 
 // Conectar a la base de datos
-connectDB()
+db.sync()
+    .then(() => console.log('Database working'))
+    .catch(error => console.log(error));
+
 // enable express.json
 app.use( express.json({ extended: true }));
 
@@ -14,6 +17,8 @@ app.use( express.json({ extended: true }));
 const port = process.env.PORT || 4000;
 
 // Import routes
+app.use('/user', require('./routes/user'));
+
 
 // start app
 app.listen(port,  () => {
