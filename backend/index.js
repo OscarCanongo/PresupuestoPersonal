@@ -1,16 +1,12 @@
 const express = require('express');
-//const conectarDB = require('./config/db');
+const connectDB = require('./config/db');
 const cors = require('cors');
 
 // create server
 const app = express();
 
 // Conectar a la base de datos
-//conectarDB();
-
-// enable cors
-app.use(cors());
-
+connectDB()
 // enable express.json
 app.use( express.json({ extended: true }));
 
@@ -21,5 +17,5 @@ const port = process.env.PORT || 4000;
 
 // start app
 app.listen(port,  () => {
-    console.log(`El servidor esta funcionando en el puerto ${port}`);
+    console.log(`Server working in port; ${port}`);
 });
