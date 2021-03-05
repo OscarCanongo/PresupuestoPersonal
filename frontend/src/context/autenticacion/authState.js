@@ -31,7 +31,7 @@ const AuthState = props => {
         }
 
         try {
-            const respuesta = await clienteAxios.get('/api/auth');
+            const respuesta = await clienteAxios.get('/auth');
             dispatch({
                 type: OBTENER_USUARIO,
                 payload: respuesta.data.reclutador
@@ -48,7 +48,7 @@ const AuthState = props => {
     // Cuando el usuario inicia sesión
     const iniciarSesion = async datos => {
         try {
-            const respuesta = await clienteAxios.post('/api/auth', datos);
+            const respuesta = await clienteAxios.post('/auth', datos);
             
             dispatch({
                 type: LOGIN_EXITOSO,

@@ -15,7 +15,10 @@ exports.authUser = async (req, res) => {
 
     try {
         // Check that registered user is unique
-        let user = await User.findOne({ email });
+        const user = await User.findOne({
+            where: { email }
+        });
+
         if(!user) {
             return res.status(400).json({msg: 'El usuario no existe'});
         }
@@ -51,12 +54,3 @@ exports.authUser = async (req, res) => {
 
 
 // Get which user is authenticated
-exports.userAuth = async (req, res) => {
-    try {
-        const user = await User.findById(req.user.id).select('-password');
-        res.json({user});
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({msg: 'Hubo un error'});
-    }
-}

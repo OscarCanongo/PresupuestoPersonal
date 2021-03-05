@@ -10,6 +10,9 @@ db.sync()
     .then(() => console.log('Database working'))
     .catch(error => console.log(error));
 
+// enable cors
+app.use(cors());
+
 // enable express.json
 app.use( express.json({ extended: true }));
 

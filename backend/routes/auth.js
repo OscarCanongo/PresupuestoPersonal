@@ -9,8 +9,8 @@ router.post('/',
 );
 
 // get auth user
-router.get('/',
-    auth,
-    authController.userAuth
-);
+//router.get('/',
+  //  auth,
+    //authController.userAuth
+//);
 module.exports = router;
