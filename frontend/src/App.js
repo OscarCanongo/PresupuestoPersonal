@@ -3,7 +3,8 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import AuthState from './context/autenticacion/authState';
 import tokenAuth from './config/token';
-import AlertaState from './context/alertas/alertaState';
+import AlertaState from './context/alertas/alertaState'; 
+import NuevaCuenta from './components/NuevaCuenta';
 
 //Check if we have a token
 const token = localStorage.getItem('token');
@@ -19,6 +20,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/crear-cuenta" component={NuevaCuenta}/>
           </Switch>
         </Router>
       </AuthState>

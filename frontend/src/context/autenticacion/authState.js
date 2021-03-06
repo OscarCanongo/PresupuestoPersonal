@@ -9,7 +9,9 @@ import { 
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION
+    CERRAR_SESION,
+    REGISTRO_EXITOSO,
+    REGISTRO_ERROR
 } from '../../types';
 
 const AuthState = props => {
@@ -23,6 +25,34 @@ const AuthState = props => {
 
     const [ state, dispatch ] = useReducer(AuthReducer, initialState);
 
+    const registrarUsuario = async datos => {
+        try {
+            console.log(datos);
+            const respuesta = await clienteAxios.post('/user', datos);
+            console.log(respuesta.data);
+
+            dispatch({
+                type: REGISTRO_EXITOSO,
+                payload: respuesta.data
+            });
+
+            // Obtener el usuario
+            usuarioAutenticado();
+        } catch (error) {
+            // console.log(error.response.data.msg);
+            const alerta = {
+                msg: error.response.data.msg,
+                categoria: 'alerta-error'
+            }
+
+            dispatch({
+                type: REGISTRO_ERROR,
+                payload: alerta
+            })
+        }
+    }
+
+
     // Retorna el usuario autenticado
     const usuarioAutenticado = async () => {
         const token = localStorage.getItem('token');
@@ -34,7 +64,7 @@ const AuthState = props => {
             const respuesta = await clienteAxios.get('/auth');
             dispatch({
                 type: OBTENER_USUARIO,
-                payload: respuesta.data.reclutador
+                payload: respuesta.data.user
             });
 
         } catch (error) {
@@ -88,6 +118,7 @@ const AuthState = props => {
                 cargando: state.cargando,
                 iniciarSesion,
                 usuarioAutenticado,
+                registrarUsuario,
                 cerrarSesion
             }}
         >{props.children}

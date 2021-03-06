@@ -88,6 +88,15 @@ a {
   margin-left: 3rem;
 }
 
+/** LOGIN **/
+.acciones {
+  display: flex;
+  justify-content: space-between;
+}
+.acciones a{
+  color: #a1cae2;
+}
+
 /** BOTONES **/
 .btn {
   margin-top: 2rem;

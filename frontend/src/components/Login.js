@@ -4,8 +4,6 @@ import logo from '../images/logo.svg';
 import AlertaContext from '../context/alertas/alertaContext';
 import Alerta from './layout/Alerta';
 
-
-
 const Login = (props) => {
 
     // extraer los valores del context
@@ -68,10 +66,7 @@ const Login = (props) => {
                 <img class="centrado" src={logo} width="20%"/>
                 <h1>Iniciar Sesión</h1>
 
-                <form
-                    onSubmit={onSubmit}
-                    data-cy="form-login"
-                >
+                <form onSubmit={onSubmit} >
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input 
@@ -98,10 +93,13 @@ const Login = (props) => {
 
                     <div className="campo-form">
                         <input
-                            data-cy = "submit-login"
                             type="submit" 
                             className="btn btn-primario btn-block" 
                             value="Iniciar Sesión" />
+                    </div>
+                    <div class="campo acciones">
+                        <a href="/crear-cuenta">Crear una cuenta</a>
+                        <a href="#">Olvidé mi contraseña</a>
                     </div>
                 </form>
             </div>
