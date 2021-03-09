@@ -53,4 +53,4 @@ exports.authUser = async (req, res) => {
 }
 
 
-// Get which user is authenticated
+

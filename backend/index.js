@@ -5,6 +5,10 @@ const cors = require('cors');
 // create server
 const app = express();
 
+//Importar modelos
+require('./models/Operation');
+require('./models/User');
+
 // Conectar a la base de datos
 db.sync()
     .then(() => console.log('Database working'))
@@ -22,6 +26,7 @@ const port = process.env.PORT || 4000;
 // Import routes
 app.use('/user', require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
+app.use('/operations', require('./routes/operations'));
 
 // start app
 app.listen(port,  () => {
