@@ -53,4 +53,14 @@ exports.authUser = async (req, res) => {
 }
 
 
-
+// user authenticated 
+exports.userAuth = async (req, res) => {
+    try {
+        console.log(req.user);
+        const user = await User.findByPk(req.user.id);
+        res.json({user});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({msg: 'Hubo un error'});
+    }
+}

@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/Login';
-import Dashboard from './components/Dashboard';
+import Home from './components/Home';
 import AuthState from './context/autenticacion/authState';
 import tokenAuth from './config/token';
 import AlertaState from './context/alertas/alertaState'; 
 import NuevaCuenta from './components/NuevaCuenta';
+import OperacionesState from './context/operaciones/operacionesState';
 
 //Check if we have a token
 const token = localStorage.getItem('token');
@@ -16,13 +17,15 @@ function App() {
   return (
     <AlertaState>
       <AuthState>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/crear-cuenta" component={NuevaCuenta}/>
-          </Switch>
-        </Router>
+        <OperacionesState>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Login} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/crear-cuenta" component={NuevaCuenta}/>
+            </Switch>
+          </Router>
+        </OperacionesState>
       </AuthState>
     </AlertaState>
   );

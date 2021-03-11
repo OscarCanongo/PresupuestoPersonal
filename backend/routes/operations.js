@@ -9,4 +9,10 @@ router.get('/',
     operationController.getAllOperations
 )
 
+// Get balance
+router.get('/balance', 
+    auth,
+    operationController.getBalance 
+)
+
 module.exports = router;

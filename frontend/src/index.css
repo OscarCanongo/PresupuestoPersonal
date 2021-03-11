@@ -32,8 +32,13 @@ h2{
   font-family: var(--headingFont);
   font-weight: 900;
   text-align: center;
-  color: var(--blanco);
   margin-left: 1rem;
+}
+h2.positivo {
+  color: #1f441e;
+}
+h2.negativo {
+  color: #CB3234;
 }
 
 h1 {
@@ -92,6 +97,7 @@ a {
 .acciones {
   display: flex;
   justify-content: space-between;
+  margin-right: 2rem;
 }
 .acciones a{
   color: #a1cae2;
@@ -231,9 +237,9 @@ a {
       flex: 0 0 200px;
   }
   .seccion-principal {
-      flex: 1;
-      background-color: #24292e;
-  }
+    flex: 1;
+    background-color: #d0af84;
+  } 
 
 }
 
@@ -270,8 +276,8 @@ aside  {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #20232b;
-  padding: 0.5rem;
+  background-color: #966c3b;
+  padding: 2.5rem;
 }
 .app-subheader {
   display: flex;
@@ -364,7 +370,15 @@ aside  {
   align-items: center;
   margin-bottom: 1rem;
   border-radius: .5rem;
-
+}
+.tarea1 {
+  display: flex;
+  justify-content: space-between;
+  background-color: #a1cae2;
+  padding: .5rem 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-radius: .5rem;
 }
 .sombra {
   -webkit-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
@@ -392,13 +406,13 @@ aside  {
 }
 
 .estado {
-  margin-right: 1rem;
+  margin-right: 5rem;
 }
 .estado button, 
 .mensaje {
   font-weight: 900;
   font-family: var(--textFont);
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: .5rem;
   border-radius: .5rem;
   cursor: pointer;

@@ -9,3 +9,8 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CERRAR_SESION = 'CERRAR_SESION';
 export const REGISTRO_EXITOSO  = 'REGISTRO_EXITOSO';
 export const REGISTRO_ERROR = 'REGISTRO_ERROR';
+
+//Operaciones
+export const GET_OPERACIONES = 'GET_OPERACIONES';
+export const OPERACION_ERROR = 'OPERACION_ERROR';
+export const GET_BALANCE = 'GET_BALANCE';
