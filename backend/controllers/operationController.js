@@ -7,3 +7,11 @@ exports.getAllOperations = async (req, res) => {
     });
     res.json({operations});
 }
+
+exports.getBalance = async (req, res) => {
+    const userId = req.user.id;
+    const result = await Operation.sum('monto', {
+        where: { userId }
+    });
+    res.json({result});
+}

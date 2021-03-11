@@ -15,7 +15,7 @@ const Login = (props) => {
 
       useEffect(() => {
         if(autenticado) {
-            props.history.push('/dashboard');
+            props.history.push('/home');
         }
 
         // En caso de que el password o usuario no exista

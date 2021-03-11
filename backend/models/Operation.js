@@ -17,6 +17,15 @@ const Operation = db.define('operation', {
             }
         },
     },  
+    monto: {
+        type: Sequelize.INTEGER,
+        allowNull : false,  
+        validate: {
+            notEmpty: {
+                msg: "Agrega el Monto"
+            }
+        },
+    }, 
     tipo: {
         type: Sequelize.INTEGER,
         allowNull : false,  
