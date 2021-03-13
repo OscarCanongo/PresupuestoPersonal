@@ -10,14 +10,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Moment from 'react-moment';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: theme.palette.success.light,
       color: theme.palette.common.white,
+      fontSize: 25
     },
     body: {
-      fontSize: 14,
+      fontSize: 20,
     },
   }))(TableCell);
   
@@ -31,7 +33,7 @@ const StyledTableCell = withStyles((theme) => ({
 
   const useStyles = makeStyles({
     table: {
-      minWidth: 700,
+      minWidth: 0,
     },
   });
 
@@ -73,11 +75,11 @@ const Home = () => {
                             <Table className={classes.table} aria-label="customized table">
                                 <TableHead>
                                 <TableRow>
-                                    <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                                    <StyledTableCell align="right">Calories</StyledTableCell>
-                                    <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                                    <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                                    <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                                    <StyledTableCell>Concepto</StyledTableCell>
+                                    <StyledTableCell align="right">Monto</StyledTableCell>
+                                    <StyledTableCell align="right">Categoria</StyledTableCell>
+                                    <StyledTableCell align="right">Tipo</StyledTableCell>
+                                    <StyledTableCell align="right">Fecha</StyledTableCell>
                                 </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -88,9 +90,18 @@ const Home = () => {
                                             {operacion.concepto}
                                         </StyledTableCell>
                                         <StyledTableCell align="right">{operacion.monto}</StyledTableCell>
-                                        <StyledTableCell align="right">{operacion.tipo}</StyledTableCell>
-                                        <StyledTableCell align="right">{operacion.categoria}</StyledTableCell>
-                                        <StyledTableCell align="right">{operacion.createdAt}</StyledTableCell>
+                                        {operacion.tipo > 0
+                                          ?<StyledTableCell align="right">Ingreso</StyledTableCell>
+                                          :<StyledTableCell align="right">Egreso</StyledTableCell>
+                                        }
+                                        {operacion.categoria === 1
+                                          ?<StyledTableCell align="right">Sueldo</StyledTableCell>
+                                          :operacion.categoria === 2 ? <StyledTableCell align="right">Extras</StyledTableCell>
+                                          :operacion.categoria === 3 ? <StyledTableCell align="right">Casa</StyledTableCell>
+                                          :operacion.categoria === 4 ? <StyledTableCell align="right">Comida</StyledTableCell>
+                                          :<StyledTableCell align="right">Antojos</StyledTableCell>
+                                        }
+                                        <StyledTableCell align="right"><Moment format="DD-MM-YYYY">{operacion.createdAt}</Moment></StyledTableCell>
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>

@@ -35,7 +35,7 @@ h2{
   margin-left: 1rem;
 }
 h2.positivo {
-  color: #1f441e;
+  color: #388e3c;
 }
 h2.negativo {
   color: #CB3234;
@@ -352,9 +352,9 @@ aside  {
 }
 
 /** TALENTOSLISTADO **/
-.contenedor-talentos {
-  padding-left: 4rem;
-  padding-right: 4rem;
+.contenedor-tareas {
+  padding-left: 20rem;
+  padding-right: 20rem;
 }
 
 .listado-tareas {
