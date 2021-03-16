@@ -28,6 +28,14 @@ body {
   display:block;
 }
 
+.izquierdo{
+  margin:5px auto;
+  display:block;
+}
+.izquierdo:hover {
+  cursor: pointer;
+}
+
 h2{
   font-family: var(--headingFont);
   font-weight: 900;
@@ -214,7 +222,7 @@ a {
   width: 100%;
 }
 .btn-submit:hover {
-  background-color: var(--gris2);
+  background-color: #4e3620;
 }
 .btn-blank {
   margin: 0;
@@ -277,7 +285,7 @@ aside  {
   justify-content: space-between;
   align-items: center;
   background-color: #966c3b;
-  padding: 2.5rem;
+  padding: 1rem;
 }
 .app-subheader {
   display: flex;
@@ -294,11 +302,14 @@ aside  {
 .nombre-usuario span {
   font-weight: 900;
 }
-.nav-principal a {
+.nav-principal{
   color: var(--blanco);
-  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.nav-principal a:first-of-type {
+
+.nav-principal button:first-of-type{
   margin-right: 2rem;
 }
 
@@ -329,7 +340,7 @@ aside  {
 
 /** Formulario crear y editar tareas **/
 .formulario {
-  background-color: var(--gris3);
+  background-color: #897853;
   padding: 4rem;
 }
 .formulario form {
@@ -338,9 +349,9 @@ aside  {
 }
 .contenedor-input {
   display: flex;
+  margin-top: .5rem;
 }
 .contenedor-input label {
-  margin-bottom: 1rem;
   color: #a1cae2;
 }
 .input-text {

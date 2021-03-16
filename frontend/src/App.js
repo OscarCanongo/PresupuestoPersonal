@@ -6,6 +6,7 @@ import tokenAuth from './config/token';
 import AlertaState from './context/alertas/alertaState'; 
 import NuevaCuenta from './components/NuevaCuenta';
 import OperacionesState from './context/operaciones/operacionesState';
+import ABM from './components/ABM';
 
 //Check if we have a token
 const token = localStorage.getItem('token');
@@ -23,6 +24,7 @@ function App() {
               <Route exact path="/" component={Login} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/crear-cuenta" component={NuevaCuenta}/>
+              <Route exact path="/abm" component={ABM}/>
             </Switch>
           </Router>
         </OperacionesState>
