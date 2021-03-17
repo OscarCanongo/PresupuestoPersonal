@@ -574,3 +574,43 @@ aside  {
   color: var(--blanco);
 }
 
+/** Iniciar Sesión **/
+.default-form {
+  max-width: 800px;
+  margin: 4rem  auto 0 auto; 
+}
+.default-form h3 {
+  color: #616065;
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  
+}
+.default-form .campo {
+  margin-bottom: 1rem;
+  display: flex;   
+}
+.default-form label {
+  padding-top: 1rem;
+  flex: 0 0 18rem;
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.default-form input[type="text"],
+.default-form input[type="number"],
+.default-form input[type="date"],
+.default-form select,
+.default-form textarea  {
+  flex: 1;
+  height: 4.5rem;
+  padding: 1rem;
+  font-size: 1.8rem;
+  border-radius: 1rem;
+  border: none;
+} 
+
+.default-form input[type="file"] {
+  color: white;
+}

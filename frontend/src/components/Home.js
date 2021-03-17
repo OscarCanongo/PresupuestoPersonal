@@ -90,7 +90,7 @@ const Home = () => {
                                             {operacion.concepto}
                                         </StyledTableCell>
                                         <StyledTableCell align="right">{operacion.monto}</StyledTableCell>
-                                        {operacion.tipo > 0
+                                        {operacion.tipo == 1
                                           ?<StyledTableCell align="right">Ingreso</StyledTableCell>
                                           :<StyledTableCell align="right">Egreso</StyledTableCell>
                                         }

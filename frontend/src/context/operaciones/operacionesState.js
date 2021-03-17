@@ -6,7 +6,8 @@ import OperacionesReducer from './operacionesReducer';
 import { 
     GET_OPERACIONES,
     OPERACION_ERROR,
-    GET_BALANCE
+    GET_BALANCE,
+    AGREGAR_OPERACION
 } from '../../types';
 
 import clienteAxios from '../../config/axios';
@@ -15,7 +16,8 @@ const OperacionesState = props => {
     const initialState = {
         operaciones: [],
         msg: null,
-        balance: 0
+        balance: 0,
+        errorOperacion: false
     }
 
     // Crear dispatch y state
@@ -71,14 +73,31 @@ const OperacionesState = props => {
         }
     }
 
+    // Agregar operacion
+    const agregarOperacion = async operacion => {
+
+        try {
+            const resultado = await clienteAxios.post('/operations', operacion);
+            dispatch({
+                type: AGREGAR_OPERACION,
+                payload: resultado.data.operacion
+            })
+            console.log(resultado);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <OperacionesContext.Provider
             value={{
                 operaciones : state.operaciones,
                 msg: state.msg,
                 balance: state.balance,
+                errorOperacion: state.errorOperacion,
                 getOperaciones,
-                getBalance
+                getBalance,
+                agregarOperacion
             }}
         >
             {props.children}
