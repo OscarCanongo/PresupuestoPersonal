@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import Header from '../components/layout/Header';
-import tareaContext from '../context/operaciones/operacionesContext';
+import operacionContext from '../context/operaciones/operacionesContext';
 import AlertaContext from '../context/alertas/alertaContext';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -42,8 +42,8 @@ const Home = () => {
     const classes = useStyles();
 
     // extraer states
-    const tareasContext = useContext(tareaContext);
-    const { operaciones, msg, getOperaciones, balance, getBalance} = tareasContext;
+    const operacionesContext = useContext(operacionContext);
+    const { operaciones, msg, getOperaciones, balance, getBalance} = operacionesContext;
 
     const alertaContext = useContext(AlertaContext);
     const { alerta, mostrarAlerta } = alertaContext;
